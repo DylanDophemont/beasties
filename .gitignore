@@ -1,3 +1,4 @@
+..gitignore.*
 boot.php
 index.php
 install.php
@@ -18,4 +19,7 @@ install.php
 /modules/shop/*
 /modules/system/*
 /modules/users/*
+*/bin/*
+*/gen/*
+*/.gwt/*
 # add content_*.php if you don't want erase client changes to content
