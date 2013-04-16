@@ -1,28 +1,42 @@
 package nl.hr.student.ddophemont.beasties.screens;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
+import java.util.ArrayList;
 
-public abstract class DefaultScreen implements Screen {
+import nl.hr.student.ddophemont.beasties.Beasties;
+import nl.hr.student.ddophemont.beasties.IDrawable;
+import nl.hr.student.ddophemont.beasties.IUpdatable;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL10;
+
+public abstract class DefaultScreen implements Screen, IDrawable, IUpdatable {
 
 	protected Game game;
 	
+	private ArrayList<IDrawable> _drawables;
+	
 	public DefaultScreen( Game game ) {
 		this.game = game;
-	}
-	
-	public void draw(float delta) {
-		
-	}
-	
-	public void update(float delta) {
-		
+		_drawables = new ArrayList<IDrawable>();
 	}
 	
 	@Override
 	public void render(float delta) {
 		draw( delta );
 		update( delta );
+	}
+	
+	public void draw(float delta) {
+		Gdx.gl.glClear( GL10.GL_COLOR_BUFFER_BIT );
+		Gdx.gl.glClearColor( 0, 0, 0, 1 );
+		
+		Beasties.spriteBatch.begin();
+		for ( IDrawable drawable : _drawables ) {
+			drawable.draw( delta );
+		}
+		Beasties.spriteBatch.end();
 	}
 
 	@Override
@@ -59,6 +73,14 @@ public abstract class DefaultScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void addDrawable( IDrawable drawable ) {
+		_drawables.add( drawable );
+	}
+	
+	public void removeDrawable( IDrawable drawable ) {
+		_drawables.remove( drawable );
 	}
 
 }

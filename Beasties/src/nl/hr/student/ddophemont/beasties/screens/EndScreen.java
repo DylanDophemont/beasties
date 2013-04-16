@@ -52,4 +52,14 @@ public class EndScreen extends DefaultScreen {
 
 	}
 
+	public void draw(float delta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

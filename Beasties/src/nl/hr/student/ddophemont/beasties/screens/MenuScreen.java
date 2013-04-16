@@ -1,20 +1,28 @@
 package nl.hr.student.ddophemont.beasties.screens;
 
+import java.util.ArrayList;
+
+import nl.hr.student.ddophemont.beasties.Drawable;
+
+import ui.Button;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.math.Vector2;
+
 
 public class MenuScreen extends DefaultScreen {
 	
+	private ArrayList<Button> _buttons;
+	
 	public MenuScreen( Game game ) {
 		super( game );
-	}
-	
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClear( GL10.GL_COLOR_BUFFER_BIT );
-		Gdx.gl.glClearColor(1, 0, 0, 1);
 		
+		_buttons = new ArrayList<Button>();
+		
+		Button startBtn = new Button( new Vector2( 30, Gdx.graphics.getHeight() - 30  ) );
+		addDrawable( startBtn );
+		_buttons.add( startBtn );
 	}
 
 	@Override
@@ -51,6 +59,12 @@ public class MenuScreen extends DefaultScreen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void update(float delta) {
+		for ( Button btn : _buttons ) {
+			//btn.rotation += 9;
+		}
 	}
 
 }
