@@ -2,9 +2,10 @@ package nl.hr.student.ddophemont.beasties.screens;
 
 import java.util.ArrayList;
 
+import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.Drawable;
+import nl.hr.student.ddophemont.beasties.ui.Button;
 
-import ui.Button;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -20,45 +21,17 @@ public class MenuScreen extends DefaultScreen {
 		
 		_buttons = new ArrayList<Button>();
 		
-		Button startBtn = new Button( new Vector2( 30, Gdx.graphics.getHeight() - 30  ) );
+		Button startBtn = new Button( new Vector2( 0, 0 ) );
+		startBtn.pos.y = Gdx.graphics.getHeight()/2;
+		startBtn.pos.x = Gdx.graphics.getWidth()/2;
+		
 		addDrawable( startBtn );
 		_buttons.add( startBtn );
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
+	public boolean touchDown(int x, int y, int pointer, int button) {
+		Gdx.app.log("DEBUG", "You touched me!");
+		return super.touchDown(x, y, pointer, button);
 	}
 
 	public void update(float delta) {

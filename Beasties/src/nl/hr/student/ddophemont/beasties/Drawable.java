@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class Drawable implements IDrawable {
 
+	public static final float DRAWABLE_SCALE = 2;	
+	
 	private static Texture _texture;
 	
 	private DrawArea _drawArea;
@@ -18,13 +20,13 @@ public abstract class Drawable implements IDrawable {
 	
 	public Drawable( Vector2 position, DrawArea drawArea ) {
 		if ( _texture == null ) {
-			//throw new Exception("Please set the texture first before creating childs of the Drawable class. Use the static method Drawable.setTexture(Texture texture) to solve this issue.");
+			// "Please set the texture first before creating childs of the Drawable class. Use the static method Drawable.setTexture(Texture texture) to solve this issue." 
 		}
 		
 		_drawArea = drawArea;
 		_texReg = new TextureRegion( _texture, _drawArea.x(), _drawArea.y(), _drawArea.width(), _drawArea.height() );
 		pos = position;
-		scale = 1;
+		scale = DRAWABLE_SCALE;
 		rotation = 0;
 	}
 
