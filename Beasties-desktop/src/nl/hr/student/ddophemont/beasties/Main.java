@@ -8,8 +8,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Beasties";
 		cfg.useGL20 = true;
-		cfg.width = 1024;
-		cfg.height = 768;
+		cfg.width = 240;
+		cfg.height = 384;
 		
 		new LwjglApplication(new Beasties(), cfg);
 	}
