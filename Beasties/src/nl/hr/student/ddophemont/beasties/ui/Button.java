@@ -5,14 +5,12 @@ import com.badlogic.gdx.math.Vector2;
 import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.Drawable;
 
-public class Button extends Drawable {
+public abstract class Button extends Drawable {
 
-	public Button( Vector2 position ) {
-		super( position, DrawArea.StartBtn() );
+	public Button( Vector2 position, DrawArea drawArea ) {
+		super( position, drawArea );
 	}
 	
-	public void btnPressed() {
-		
-	}
+	public abstract void isPressed( float x, float y );
 
 }

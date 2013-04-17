@@ -2,9 +2,11 @@ package nl.hr.student.ddophemont.beasties.screens;
 
 import java.util.ArrayList;
 
+import nl.hr.student.ddophemont.beasties.Beasties;
 import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.Drawable;
 import nl.hr.student.ddophemont.beasties.ui.Button;
+import nl.hr.student.ddophemont.beasties.ui.StartButton;
 
 
 import com.badlogic.gdx.Game;
@@ -21,16 +23,16 @@ public class MenuScreen extends DefaultScreen {
 		
 		_buttons = new ArrayList<Button>();
 		
-		Button startBtn = new Button( new Vector2( 0, 0 ) );
-		startBtn.pos.y = Gdx.graphics.getHeight()/2;
-		startBtn.pos.x = Gdx.graphics.getWidth()/2;
+		Button startBtn = new StartButton( new Vector2( Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2 ) );
 		
 		addDrawable( startBtn );
 		_buttons.add( startBtn );
 	}
 
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		Gdx.app.log("DEBUG", "You touched me!");
+		for ( Button btn : _buttons ) {
+			btn.isPressed( x, y );
+		}
 		return super.touchDown(x, y, pointer, button);
 	}
 
