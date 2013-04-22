@@ -3,6 +3,7 @@ package nl.hr.student.ddophemont.beasties.screens;
 import java.util.ArrayList;
 
 import nl.hr.student.ddophemont.beasties.Beasties;
+import nl.hr.student.ddophemont.beasties.GameObject;
 import nl.hr.student.ddophemont.beasties.IDrawable;
 import nl.hr.student.ddophemont.beasties.IUpdatable;
 
@@ -11,43 +12,41 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
-public abstract class DefaultScreen implements Screen, InputProcessor, IDrawable, IUpdatable {
+public abstract class DefaultScreen implements Screen, InputProcessor {
 
-	protected Game game;
+	//protected Game game;
 	
-	private ArrayList<IDrawable> _drawables;
+	private ArrayList<GameObject> _gameObjects;
 	
-	public DefaultScreen( Game game ) {
-		this.game = game;
-		_drawables = new ArrayList<IDrawable>();
-		
+	public DefaultScreen() {
+		_gameObjects = new ArrayList<GameObject>();
 		Gdx.input.setInputProcessor( this );
 	}
 	
 	@Override
 	public void render(float delta) {
-		draw( delta );
-		update( delta );
-	}
-	
-	public void draw(float delta) {
 		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 		Gdx.gl.glClear( GL10.GL_COLOR_BUFFER_BIT );
+		Beasties.camera.update();
+	    Beasties.spriteBatch.setProjectionMatrix(Beasties.camera.combined);
 		
 		Beasties.spriteBatch.begin();
-		for ( IDrawable drawable : _drawables ) {
-			drawable.draw( delta );
+		for ( GameObject gameObject : _gameObjects ) {
+			gameObject.draw( delta );
+			gameObject.update( delta );
 		}
 		Beasties.spriteBatch.end();
 	}
 
 	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
+	public void resize( int width, int height ) {
+		
 	}
 
+	
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
@@ -78,12 +77,12 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IDrawable
 
 	}
 	
-	public void addDrawable( IDrawable drawable ) {
-		_drawables.add( drawable );
+	public void addGameObject( GameObject gameObject ) {
+		_gameObjects.add( gameObject );
 	}
 	
-	public void removeDrawable( IDrawable drawable ) {
-		_drawables.remove( drawable );
+	public void removeGameObject( GameObject gameObject ) {
+		_gameObjects.remove( gameObject );
 	}
 
 	@Override

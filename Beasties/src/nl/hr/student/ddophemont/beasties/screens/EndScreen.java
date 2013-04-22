@@ -5,8 +5,7 @@ import com.badlogic.gdx.Screen;
 
 public class EndScreen extends DefaultScreen {
 
-	public EndScreen(Game game) {
-		super(game);
+	public EndScreen() {
 		// TODO Auto-generated constructor stub
 	}
 
