@@ -14,53 +14,53 @@ public class DrawArea {
 		_height = height;
 	}
 
-	public int x() {
+	public int getX() {
 		return _x;
 	}
 
-	public void x(int x) {
+	public void setX(int x) {
 		_x = x;
 	}
 	
-	public int y() {
+	public int getY() {
 		return _y;
 	}
 
-	public void y(int y) {
+	public void setY(int y) {
 		_y = y;
 	}
 
-	public int width() {
+	public int getWidth() {
 		return _width;
 	}
 
-	public void width(int width) {
+	public void setWidth(int width) {
 		_width = width;
 	}
 	
-	public int height() {
+	public int getHeight() {
 		return _height;
 	}
 
-	public void height(int height) {
+	public void setHeight(int height) {
 		_height = height;
 	}
 	
 	/* Predefined DrawAreas */
 	
-	public static DrawArea TriangleUp() {
+	public static DrawArea TriangleBtnUp() {
 		return new DrawArea( 63, 1, 30, 30 );
 	}
 	
-	public static DrawArea TriangleDown() {
+	public static DrawArea TriangleBtnDown() {
 		return new DrawArea( 95, 1, 30, 30 );
 	}
 	
-	public static DrawArea TriangleLeft() {
+	public static DrawArea TriangleBtnLeft() {
 		return new DrawArea( 1, 1, 30, 30 );
 	}
 	
-	public static DrawArea TriangleRight() {
+	public static DrawArea TriangleBtnRight() {
 		return new DrawArea( 32, 1, 30, 30 );
 	}
 	
@@ -92,8 +92,24 @@ public class DrawArea {
 		return new DrawArea( 36, 32, 104, 73 );
 	}
 	
-	public static DrawArea BackGround() {
+	public static DrawArea Background() {
 		return new DrawArea( 194, 1, 120, 192 );
+	}
+	
+	public static DrawArea ReloadIndicatorBackground() {
+		return new DrawArea( 141, 32, 25, 11 );
+	}
+	
+	public static DrawArea ReloadIndicatorForeground() {
+		return new DrawArea( 141, 44, 25, 11 );
+	}
+	
+	public static DrawArea Base() {
+		return new DrawArea( 141, 56, 40, 49 );
+	}
+	
+	public static DrawArea Black() {
+		return new DrawArea( 234, 15, 4, 4 );
 	}
 	
 }
