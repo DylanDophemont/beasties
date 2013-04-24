@@ -1,11 +1,11 @@
 package nl.hr.student.ddophemont.beasties.screens;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
 
 public class EndScreen extends DefaultScreen {
 
-	public EndScreen() {
+	public EndScreen( Game game ) {
+		super( game );
 		// TODO Auto-generated constructor stub
 	}
 
