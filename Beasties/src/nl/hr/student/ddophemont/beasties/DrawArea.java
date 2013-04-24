@@ -46,6 +46,10 @@ public class DrawArea {
 		_height = height;
 	}
 	
+	public String toString () {
+		return "x: " + _x + ", y: " + _y + ", width: " + _width + ", height: " + _height;
+	}
+	
 	/* Predefined DrawAreas */
 	
 	public static DrawArea TriangleBtnUp() {
@@ -65,19 +69,19 @@ public class DrawArea {
 	}
 	
 	public static DrawArea TargetTriangleUp() {
-		return new DrawArea( 187, 1, 6, 6 );
-	}
-	
-	public static DrawArea TargetTriangleDown() {
-		return new DrawArea( 187, 8, 6, 6 );
-	}
-	
-	public static DrawArea TargetTriangleLeft() {
 		return new DrawArea( 187, 15, 6, 6 );
 	}
 	
-	public static DrawArea TargetTriangleRight() {
+	public static DrawArea TargetTriangleDown() {
 		return new DrawArea( 187, 22, 6, 6 );
+	}
+	
+	public static DrawArea TargetTriangleLeft() {
+		return new DrawArea( 187, 1, 6, 6 );
+	}
+	
+	public static DrawArea TargetTriangleRight() {
+		return new DrawArea( 187, 8, 6, 6 );
 	}
 	
 	public static DrawArea StartBtn() {
