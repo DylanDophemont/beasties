@@ -116,4 +116,8 @@ public class DrawArea {
 		return new DrawArea( 234, 15, 4, 4 );
 	}
 	
+	public static DrawArea Laser() {
+		return new DrawArea( 167, 32, 4, 4 );
+	}
+	
 }
