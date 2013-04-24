@@ -2,31 +2,32 @@ package nl.hr.student.ddophemont.beasties.screens;
 
 import java.util.ArrayList;
 
-import nl.hr.student.ddophemont.beasties.Beasties;
 import nl.hr.student.ddophemont.beasties.GameObject;
-import nl.hr.student.ddophemont.beasties.IDrawable;
 import nl.hr.student.ddophemont.beasties.IUpdatable;
+import nl.hr.student.ddophemont.beasties.enemies.Beasties;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
-public abstract class DefaultScreen implements Screen, InputProcessor {
+public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatable {
 
-	//protected Game game;
+	protected Game game;
+	protected Vector3 touchPoint;
 	
 	private ArrayList<GameObject> _gameObjects;
 	
-	public DefaultScreen() {
+	public DefaultScreen( Game game ) {
+		this.game = game;
+		this.touchPoint = new Vector3();
+		
 		_gameObjects = new ArrayList<GameObject>();
 		Gdx.input.setInputProcessor( this );
 	}
 	
-	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 		Gdx.gl.glClear( GL10.GL_COLOR_BUFFER_BIT );
@@ -36,9 +37,16 @@ public abstract class DefaultScreen implements Screen, InputProcessor {
 		Beasties.spriteBatch.begin();
 		for ( GameObject gameObject : _gameObjects ) {
 			gameObject.draw( delta );
+		}
+		this.update( delta );
+		Beasties.spriteBatch.end();
+	}
+
+	@Override
+	public void update( float delta ) {
+		for ( GameObject gameObject : _gameObjects ) {
 			gameObject.update( delta );
 		}
-		Beasties.spriteBatch.end();
 	}
 
 	@Override
@@ -77,6 +85,12 @@ public abstract class DefaultScreen implements Screen, InputProcessor {
 
 	}
 	
+	public void addGameObject( ArrayList<GameObject> gameObjects ) {
+		for ( GameObject go : gameObjects ) {
+			_gameObjects.add( go );
+		}
+	}
+	
 	public void addGameObject( GameObject gameObject ) {
 		_gameObjects.add( gameObject );
 	}
@@ -87,7 +101,6 @@ public abstract class DefaultScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
