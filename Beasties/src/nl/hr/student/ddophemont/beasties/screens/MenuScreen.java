@@ -2,10 +2,11 @@ package nl.hr.student.ddophemont.beasties.screens;
 
 import java.util.ArrayList;
 
+import nl.hr.student.ddophemont.beasties.IGameObject;
 import nl.hr.student.ddophemont.beasties.SatelliteDish;
 import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.GameObject;
-import nl.hr.student.ddophemont.beasties.enemies.Beasties;
+import nl.hr.student.ddophemont.beasties.Beasties;
 import nl.hr.student.ddophemont.beasties.ui.Background;
 import nl.hr.student.ddophemont.beasties.ui.BlackOverlay;
 import nl.hr.student.ddophemont.beasties.ui.Button;
@@ -13,8 +14,6 @@ import nl.hr.student.ddophemont.beasties.ui.StartButton;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-
 
 public class MenuScreen extends DefaultScreen {
 	
@@ -32,7 +31,7 @@ public class MenuScreen extends DefaultScreen {
 		this.addGameObject( new  SatelliteDish( new Vector2( 40, 3 ) ) );
 		this.addGameObject( new BlackOverlay( new Vector2( Beasties.WIDTH/2f, Beasties.HEIGHT/2f ), .7f ) );
 		
-		this.addGameObject( new ArrayList<GameObject>( _buttons ) );
+		this.addGameObject( new ArrayList<IGameObject>( _buttons ) );
 	}
 
 	public boolean touchDown( int x, int y, int pointer, int button ) {

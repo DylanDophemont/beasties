@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.GameObject;
+import nl.hr.student.ddophemont.beasties.IGameObject;
 import nl.hr.student.ddophemont.beasties.Level;
-import nl.hr.student.ddophemont.beasties.enemies.Beasties;
+import nl.hr.student.ddophemont.beasties.Beasties;
 import nl.hr.student.ddophemont.beasties.enemies.MiniBeast;
 import nl.hr.student.ddophemont.beasties.enemies.abilities.Ability;
 import nl.hr.student.ddophemont.beasties.enemies.abilities.MoveFastAbility;
@@ -40,7 +41,7 @@ public class GameScreen extends DefaultScreen {
 		_buttons.add( new TriangleRightButton( new Vector2( tw*2, 0 ) ) );
 		_buttons.add( new TriangleDownButton( new Vector2( tw*3, 0 ) ) );
 		
-		this.addGameObject( new ArrayList<GameObject>( _buttons ) );
+		this.addGameObject( new ArrayList<IGameObject>( _buttons ) );
 	}
 
 	public boolean touchDown(int x, int y, int pointer, int button) {

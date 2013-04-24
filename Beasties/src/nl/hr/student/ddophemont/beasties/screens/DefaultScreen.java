@@ -2,9 +2,9 @@ package nl.hr.student.ddophemont.beasties.screens;
 
 import java.util.ArrayList;
 
-import nl.hr.student.ddophemont.beasties.GameObject;
+import nl.hr.student.ddophemont.beasties.IGameObject;
 import nl.hr.student.ddophemont.beasties.IUpdatable;
-import nl.hr.student.ddophemont.beasties.enemies.Beasties;
+import nl.hr.student.ddophemont.beasties.Beasties;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -18,13 +18,13 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 	protected Game game;
 	protected Vector3 touchPoint;
 	
-	private ArrayList<GameObject> _gameObjects;
+	private ArrayList<IGameObject> _gameObjects;
 	
 	public DefaultScreen( Game game ) {
 		this.game = game;
 		this.touchPoint = new Vector3();
 		
-		_gameObjects = new ArrayList<GameObject>();
+		_gameObjects = new ArrayList<IGameObject>();
 		Gdx.input.setInputProcessor( this );
 	}
 	
@@ -35,7 +35,7 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 	    Beasties.spriteBatch.setProjectionMatrix(Beasties.camera.combined);
 		
 		Beasties.spriteBatch.begin();
-		for ( GameObject gameObject : _gameObjects ) {
+		for ( IGameObject gameObject : _gameObjects ) {
 			gameObject.draw( delta );
 		}
 		this.update( delta );
@@ -44,7 +44,7 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 
 	@Override
 	public void update( float delta ) {
-		for ( GameObject gameObject : _gameObjects ) {
+		for ( IGameObject gameObject : _gameObjects ) {
 			gameObject.update( delta );
 		}
 	}
@@ -85,17 +85,17 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 
 	}
 	
-	public void addGameObject( ArrayList<GameObject> gameObjects ) {
-		for ( GameObject go : gameObjects ) {
+	public void addGameObject( ArrayList<IGameObject> gameObjects ) {
+		for ( IGameObject go : gameObjects ) {
 			_gameObjects.add( go );
 		}
 	}
 	
-	public void addGameObject( GameObject gameObject ) {
+	public void addGameObject( IGameObject gameObject ) {
 		_gameObjects.add( gameObject );
 	}
 	
-	public void removeGameObject( GameObject gameObject ) {
+	public void removeGameObject( IGameObject gameObject ) {
 		_gameObjects.remove( gameObject );
 	}
 
