@@ -1,6 +1,6 @@
-package nl.hr.student.ddophemont.beasties.enemies.abilities;
+package nl.hr.student.ddophemont.beasties.beasts.abilities;
 
-import nl.hr.student.ddophemont.beasties.enemies.Beast;
+import nl.hr.student.ddophemont.beasties.beasts.Beast;
 
 public class MoveFastAbility extends Ability {
 

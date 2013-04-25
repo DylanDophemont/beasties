@@ -1,4 +1,4 @@
-package nl.hr.student.ddophemont.beasties.enemies.targets;
+package nl.hr.student.ddophemont.beasties.beasts.targets;
 
 import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.ESymbol;

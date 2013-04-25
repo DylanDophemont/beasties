@@ -1,11 +1,11 @@
-package nl.hr.student.ddophemont.beasties.enemies;
+package nl.hr.student.ddophemont.beasties.beasts;
 
 import java.util.ArrayList;
 
 import nl.hr.student.ddophemont.beasties.DrawArea;
-import nl.hr.student.ddophemont.beasties.enemies.abilities.Ability;
-import nl.hr.student.ddophemont.beasties.enemies.targets.Target;
-import nl.hr.student.ddophemont.beasties.enemies.targets.TriangleUpTarget;
+import nl.hr.student.ddophemont.beasties.beasts.abilities.Ability;
+import nl.hr.student.ddophemont.beasties.beasts.targets.Target;
+import nl.hr.student.ddophemont.beasties.beasts.targets.TriangleUpTarget;
 
 import com.badlogic.gdx.math.Vector2;
 
