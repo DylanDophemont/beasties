@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 public class TriangleLeftButton extends TriangleButton {
 
 	public TriangleLeftButton( Vector2 position ) {
-		super(position, DrawArea.TriangleBtnLeft(), ESymbol.TriangleLeft );
+		super(position, DrawArea.triangleBtnLeft(), ESymbol.TriangleLeft );
 	}
 
 }

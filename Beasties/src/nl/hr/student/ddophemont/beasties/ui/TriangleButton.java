@@ -28,16 +28,26 @@ public abstract class TriangleButton extends Button {
 			return false;
 		}
 	}
+	
+	public void down() {
+		this.pressed = true;
+		this.setColor( 1, 1, 1, 1 );
+	}
+	
+	public void up() {
+		this.pressed = false;
+	}
 
-	@Override
 	public void update(float delta) {
 		if ( !pressed &&  this.getColor().a > .5f ) {
 			Color c = this.getColor();
 			c.a -= .02f;
 			this.setColor( c );
 		}
-		
-		super.update(delta);
 	}
 
+	public ESymbol getType() {
+		return _type;
+	}
+	
 }
