@@ -1,6 +1,6 @@
 package nl.hr.student.ddophemont.beasties;
 
-import nl.hr.student.ddophemont.beasties.enemies.Beasties;
+import nl.hr.student.ddophemont.beasties.Beasties;
 import android.os.Bundle;
 import android.view.View;
 

@@ -24,11 +24,11 @@ public class MenuScreen extends DefaultScreen {
 		
 		_buttons = new ArrayList<Button>();
 		
-		Button startBtn = new StartButton( new Vector2( Beasties.WIDTH/2 - DrawArea.StartBtn().getWidth()/2f, Beasties.HEIGHT/2 - DrawArea.StartBtn().getHeight()/2f ) );
+		Button startBtn = new StartButton( new Vector2( Beasties.WIDTH/2 - DrawArea.startBtn().getWidth()/2f, Beasties.HEIGHT/2 - DrawArea.startBtn().getHeight()/2f ) );
 		_buttons.add( startBtn );
 		
 		this.addGameObject( new Background( new Vector2( Beasties.WIDTH/2f, Beasties.HEIGHT/2f ) ) );
-		this.addGameObject( new  SatelliteDish( new Vector2( 40, 3 ) ) );
+		this.addGameObject( new SatelliteDish( new Vector2( 40, 3 ) ) );
 		this.addGameObject( new BlackOverlay( new Vector2( Beasties.WIDTH/2f, Beasties.HEIGHT/2f ), .7f ) );
 		
 		this.addGameObject( new ArrayList<IGameObject>( _buttons ) );

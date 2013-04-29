@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nl.hr.student.ddophemont.beasties.IGameObject;
 import nl.hr.student.ddophemont.beasties.IUpdatable;
 import nl.hr.student.ddophemont.beasties.Beasties;
+import nl.hr.student.ddophemont.beasties.beasts.Beast;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -18,13 +19,13 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 	protected Game game;
 	protected Vector3 touchPoint;
 	
-	private ArrayList<IGameObject> _gameObjects;
+	protected ArrayList<IGameObject> gameObjects;
 	
 	public DefaultScreen( Game game ) {
 		this.game = game;
 		this.touchPoint = new Vector3();
 		
-		_gameObjects = new ArrayList<IGameObject>();
+		gameObjects = new ArrayList<IGameObject>();
 		Gdx.input.setInputProcessor( this );
 	}
 	
@@ -35,18 +36,16 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 	    Beasties.spriteBatch.setProjectionMatrix(Beasties.camera.combined);
 		
 		Beasties.spriteBatch.begin();
-		for ( IGameObject gameObject : _gameObjects ) {
-			gameObject.draw( delta );
+		for ( int i = 0; i < gameObjects.size(); i++ ) { 
+			gameObjects.get(i).draw( delta );
+			gameObjects.get(i).update( delta );
 		}
-		this.update( delta );
 		Beasties.spriteBatch.end();
 	}
 
 	@Override
 	public void update( float delta ) {
-		for ( IGameObject gameObject : _gameObjects ) {
-			gameObject.update( delta );
-		}
+		// Do nothing
 	}
 
 	@Override
@@ -87,16 +86,25 @@ public abstract class DefaultScreen implements Screen, InputProcessor, IUpdatabl
 	
 	public void addGameObject( ArrayList<IGameObject> gameObjects ) {
 		for ( IGameObject go : gameObjects ) {
-			_gameObjects.add( go );
+			this.gameObjects.add( go );
 		}
 	}
 	
 	public void addGameObject( IGameObject gameObject ) {
-		_gameObjects.add( gameObject );
+		this.gameObjects.add( gameObject );
 	}
 	
 	public void removeGameObject( IGameObject gameObject ) {
-		_gameObjects.remove( gameObject );
+		this.gameObjects.remove( gameObject );
+	}
+	
+	public IGameObject getFirstGameObject( String nameSuperClass ) {
+		for ( IGameObject g : gameObjects ) {
+			if ( nameSuperClass.equals( g.getClass().getSuperclass().getSimpleName() ) ) {
+				return g;
+			}
+		}
+		return null;
 	}
 
 	@Override

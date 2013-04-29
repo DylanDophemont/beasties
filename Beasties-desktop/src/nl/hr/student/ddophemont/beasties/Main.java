@@ -1,5 +1,7 @@
 package nl.hr.student.ddophemont.beasties;
 
+import nl.hr.student.ddophemont.beasties.Beasties;
+
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 

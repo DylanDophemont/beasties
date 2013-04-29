@@ -52,71 +52,75 @@ public class DrawArea {
 	
 	/* Predefined DrawAreas */
 	
-	public static DrawArea TriangleBtnUp() {
+	public static DrawArea triangleBtnUp() {
 		return new DrawArea( 63, 1, 30, 30 );
 	}
 	
-	public static DrawArea TriangleBtnDown() {
+	public static DrawArea triangleBtnDown() {
 		return new DrawArea( 95, 1, 30, 30 );
 	}
 	
-	public static DrawArea TriangleBtnLeft() {
+	public static DrawArea triangleBtnLeft() {
 		return new DrawArea( 1, 1, 30, 30 );
 	}
 	
-	public static DrawArea TriangleBtnRight() {
+	public static DrawArea triangleBtnRight() {
 		return new DrawArea( 32, 1, 30, 30 );
 	}
 	
-	public static DrawArea TargetTriangleUp() {
+	public static DrawArea targetTriangleUp() {
 		return new DrawArea( 187, 15, 6, 6 );
 	}
 	
-	public static DrawArea TargetTriangleDown() {
+	public static DrawArea targetTriangleDown() {
 		return new DrawArea( 187, 22, 6, 6 );
 	}
 	
-	public static DrawArea TargetTriangleLeft() {
+	public static DrawArea targetTriangleLeft() {
 		return new DrawArea( 187, 1, 6, 6 );
 	}
 	
-	public static DrawArea TargetTriangleRight() {
+	public static DrawArea targetTriangleRight() {
 		return new DrawArea( 187, 8, 6, 6 );
 	}
 	
-	public static DrawArea StartBtn() {
+	public static DrawArea startBtn() {
 		return new DrawArea( 125, 1, 61, 30 );
 	}
 	
-	public static DrawArea MiniBeast() {
+	public static DrawArea miniBeast() {
 		return new DrawArea( 1, 32, 34, 34 );
 	}
 	
-	public static DrawArea MediumBeast() {
+	public static DrawArea mediumBeast() {
 		return new DrawArea( 36, 32, 104, 73 );
 	}
 	
-	public static DrawArea Background() {
+	public static DrawArea background() {
 		return new DrawArea( 194, 1, 120, 192 );
 	}
 	
-	public static DrawArea ReloadIndicatorBackground() {
+	public static DrawArea reloadIndicatorBackground() {
 		return new DrawArea( 141, 32, 25, 11 );
 	}
 	
-	public static DrawArea ReloadIndicatorForeground() {
+	public static DrawArea reloadIndicatorForeground() {
 		return new DrawArea( 141, 44, 25, 11 );
 	}
 	
-	public static DrawArea Base() {
+	public static DrawArea base() {
 		return new DrawArea( 141, 56, 40, 49 );
 	}
 	
-	public static DrawArea Black() {
+	public static DrawArea black() {
 		return new DrawArea( 234, 15, 4, 4 );
 	}
 	
-	public static DrawArea Laser() {
+	public static DrawArea red() {
+		return new DrawArea( 77, 19, 4, 4 );
+	}
+	
+	public static DrawArea pulse() {
 		return new DrawArea( 167, 32, 4, 4 );
 	}
 	
