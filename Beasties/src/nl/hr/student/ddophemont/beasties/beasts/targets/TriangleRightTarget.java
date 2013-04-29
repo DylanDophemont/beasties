@@ -2,14 +2,12 @@ package nl.hr.student.ddophemont.beasties.beasts.targets;
 
 import nl.hr.student.ddophemont.beasties.DrawArea;
 import nl.hr.student.ddophemont.beasties.ESymbol;
-import nl.hr.student.ddophemont.beasties.GameObject;
-
-import com.badlogic.gdx.math.Vector2;
+import nl.hr.student.ddophemont.beasties.beasts.Beast;
 
 public class TriangleRightTarget extends Target {
 
-	public TriangleRightTarget( GameObject gameObject ) {
-		super( ESymbol.TriangleRight, DrawArea.TargetTriangleRight(), gameObject );
+	public TriangleRightTarget( Beast beast ) {
+		super( ESymbol.TriangleRight, DrawArea.targetTriangleRight(), beast );
 	}
 
 }

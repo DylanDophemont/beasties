@@ -22,17 +22,15 @@ public class BeastSpawner implements IGameObject {
 	public BeastSpawner( DefaultScreen screen, Vector3 spawnArea ) {
 		_screen = screen;
 		_elapsedSeconds = 0;
-		_spawnSpeed = .5f;
+		_spawnSpeed = 1;
 		_spawnArea = spawnArea;
-		
-//		Beast b = new MiniBeast( new Vector2( _spawnArea.x, _spawnArea.y ), new Vector2( 0, -1 ) );
-//		Target t = new TriangleDownTarget( b );
-//		b.addTarget( t );
-//		_screen.addGameObject( b );
 	}
 	
+	/**
+	 * @param speed: Speed in milliseconds
+	 */
 	public void setSpawnSpeed( float speed ) {
-		_spawnSpeed = speed;
+		_spawnSpeed = speed/1000;
 	}
 	
 	@Override
@@ -46,7 +44,7 @@ public class BeastSpawner implements IGameObject {
 			float randX = _spawnArea.x + (float)Math.random() * _spawnArea.z;
 			int randT = (int)(Math.random()*4);
 			
-			Beast b = new MiniBeast( new Vector2( randX-DrawArea.MiniBeast().getWidth()/2, _spawnArea.y ), new Vector2( 0, -.4f ) );
+			Beast b = new MiniBeast( new Vector2( randX-DrawArea.miniBeast().getWidth()/2, _spawnArea.y ), new Vector2( 0, -.4f ), _screen );
 			
 			while ( b.targetLocationsFree() ) {
 				Target t = new TriangleDownTarget( b );

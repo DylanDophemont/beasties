@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 import nl.hr.student.ddophemont.beasties.Beasties;
 import nl.hr.student.ddophemont.beasties.DrawArea;
+import nl.hr.student.ddophemont.beasties.ESymbol;
 import nl.hr.student.ddophemont.beasties.GameObject;
 import nl.hr.student.ddophemont.beasties.IUpdatable;
 import nl.hr.student.ddophemont.beasties.beasts.abilities.Ability;
 import nl.hr.student.ddophemont.beasties.beasts.abilities.NoAbility;
 import nl.hr.student.ddophemont.beasties.beasts.targets.Target;
+import nl.hr.student.ddophemont.beasties.screens.DefaultScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -26,7 +28,9 @@ public abstract class Beast extends GameObject implements IUpdatable {
 	
 	private float _drawDistance;
 	
-	public Beast( Vector2 position, Vector2 velocity, DrawArea drawArea ) {
+	protected DefaultScreen gameScreen;
+	
+	public Beast( Vector2 position, Vector2 velocity, DrawArea drawArea, DefaultScreen gameScreen ) {
 		super(position, drawArea);
 		
 		_targetLocations = new ArrayList<Vector2>();
@@ -37,10 +41,13 @@ public abstract class Beast extends GameObject implements IUpdatable {
 		_topSpeed = velocity.cpy();
 		
 		_drawDistance = 0;
+		
+		this.gameScreen = gameScreen;
 	}
 
 	@Override
 	public void update(float delta) {
+		_checkOnHealth();
 		this.setPos(getPos().add(_vel));
 		
 		for ( Target t : _targets ) {
@@ -52,6 +59,10 @@ public abstract class Beast extends GameObject implements IUpdatable {
 		}
 	}
 	
+	private void _checkOnHealth() {
+		if ( _targets.size() == 0 ) gameScreen.removeGameObject( this );
+	}
+
 	@Override
 	public void draw( float delta ) {
 		super.draw(delta);
@@ -69,9 +80,7 @@ public abstract class Beast extends GameObject implements IUpdatable {
 		if ( _drawDistance > 1 ) _drawDistance = 1;
 		
 		this.setScale( _drawDistance );
-//		_vel.x = .1f+(_vel.x*_drawDistance);
 		_vel.y = (_topSpeed.y/3)+_topSpeed.y*_drawDistance;
-		Gdx.app.log("DEBUG", _vel.toString());
 		this.setColor( _drawDistance, _drawDistance, _drawDistance, 1);
 	}
 
@@ -95,12 +104,20 @@ public abstract class Beast extends GameObject implements IUpdatable {
 		return false;
 	}
 	
+	public Target getTargetBySymbol( ESymbol symbol ) {
+		for ( Target t : _targets ) {
+			if ( t.getType() == symbol ) return t;
+		}
+		return null;
+	}
+	
 	public boolean targetLocationsFree() {
 		return _targets.size() != _targetLocations.size();
 	}
 	
-	public void removeTargets() {
-		_targets.removeAll( _targets );
+	public void removeTarget( Target target ) {
+		_targets.remove( target );
+		if ( _targets.size() == 0 ) ;
 	}
 
 	public void addAbility( Ability ability ) {
@@ -109,7 +126,6 @@ public abstract class Beast extends GameObject implements IUpdatable {
 	
 	public void removeAbilities() {
 		_abilities.removeAll( _abilities );
-//		_abilities.add( new NoAbility( this ) );
 	}
 	
 	protected void addTargetLocation( Vector2 p ) {
